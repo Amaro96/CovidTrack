@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="XFCovidTrack.Views.HeaderView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="Transparent"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+
+
+    <StackLayout BackgroundColor="Transparent" HorizontalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal">
+
+            <ImageButton
+                x:Name="btnMyLocation"
+                BackgroundColor="Transparent"
+                HeightRequest="20"
+                HorizontalOptions="Start"
+                Clicked="btnMyLocation_Clicked"
+                Source="repetition"
+                VerticalOptions="Center">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.8" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </ImageButton>
+
+            <ImageButton
+                BackgroundColor="Transparent"
+                HeightRequest="35"
+                HorizontalOptions="EndAndExpand"
+                Source="alarme">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                        <VisualState x:Name="Pressed">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="0.8" />
+                            </VisualState.Setters>
+                        </VisualState>
+
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </ImageButton>
+        </StackLayout>
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="21"
+            HorizontalOptions="CenterAndExpand"
+            Text="Track Our"
+            TextColor="White" />
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="21"
+            HorizontalOptions="CenterAndExpand"
+            Text="Enemies"
+            TextColor="White" />
+
+    </StackLayout>
+
+</ContentView>

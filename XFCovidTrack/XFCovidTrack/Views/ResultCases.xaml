@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFCovidTrack.Views.ResultCases"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:views="clr-namespace:XFCovidTrack.Views"
+    mc:Ignorable="d">
+
+
+    <StackLayout>
+
+        <!--  Header  -->
+        <views:HeaderView Margin="20,20" VerticalOptions="Start" />
+        <!--<pancakeview:PancakeView>
+            <StackLayout HorizontalOptions="CenterAndExpand">
+                <Label Text="Cases"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="787.225"/>
+                    <Image/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="Recovered"/>
+                        <Label Text="172,319"/>
+                    </StackLayout>
+                    <BoxView BackgroundColor="Beige" HeightRequest="5" />
+                    <StackLayout>
+                        <Label Text="death"/>
+                        <Label Text="39,104"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </pancakeview:PancakeView>
+
+        <StackLayout Orientation="Horizontal" Margin="20">
+            <Label Text="Countries Records" TextColor="White"/>
+            <Label Text="More Details" TextColor="White"/>
+        </StackLayout>
+
+        <CollectionView x:Name="">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source=""/>
+                        <StackLayout>
+                            <Label Text="{Binding caseNumbers}" TextColor="White"/>
+                            <Label Text="{Binding countrys}" TextColor="#707070"/>
+                        </StackLayout>
+
+                        <StackLayout HorizontalOptions="End">
+                            <Label Text="{Binding morecases}" TextColor="White"/>
+                            <Label Text="{Binding day}" TextColor="#707070"/>
+                        </StackLayout>
+
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
+
+    </StackLayout>
+
+</ContentPage>

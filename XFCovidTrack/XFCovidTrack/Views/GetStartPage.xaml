@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFCovidTrack.Views.GetStartPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+
+
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+        <Switch
+            x:Name="switchBtn"
+            Margin="20,20"
+            HorizontalOptions="Start"
+            IsToggled="False"
+            OnColor="White"
+            ThumbColor="#9943EF"
+            Toggled="switchBtn_Toggled"
+            VerticalOptions="Start" />
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="CenterAndExpand"
+            Text="VIRUS"
+            TextColor="White">
+            <Label.Triggers>
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
+                    TargetType="Label"
+                    Value="true">
+                    <Setter Property="TextColor" Value="White" />
+                </DataTrigger>
+
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
+                    TargetType="Label"
+                    Value="false">
+                    <Setter Property="TextColor" Value="#9943EF" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+
+        <Label
+            FontAttributes="Bold"
+            FontSize="20-"
+            HorizontalOptions="CenterAndExpand"
+            Text="TRACKER"
+            TextColor="White">
+            <Label.Triggers>
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
+                    TargetType="Label"
+                    Value="true">
+                    <Setter Property="TextColor" Value="White" />
+                </DataTrigger>
+
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
+                    TargetType="Label"
+                    Value="false">
+                    <Setter Property="TextColor" Value="#9943EF" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+
+        <Label
+            FontSize="15"
+            HorizontalTextAlignment="Center"
+            Text="Track dangerous enemies in an easy and fun way"
+            TextColor="White"
+            VerticalTextAlignment="Center">
+            <Label.Triggers>
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
+                    TargetType="Label"
+                    Value="true">
+                    <Setter Property="TextColor" Value="White" />
+                </DataTrigger>
+
+                <DataTrigger
+                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
+                    TargetType="Label"
+                    Value="false">
+                    <Setter Property="TextColor" Value="#9943EF" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+
+
+        <ImageButton
+            Margin="0,170"
+            BackgroundColor="Transparent"
+            HeightRequest="100"
+            HorizontalOptions="CenterAndExpand"
+            Source="btnGet"
+            VerticalOptions="Center">
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="1" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                    <VisualState x:Name="Pressed">
+                        <VisualState.Setters>
+                            <Setter Property="Scale" Value="0.8" />
+                        </VisualState.Setters>
+                    </VisualState>
+
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </ImageButton>
+
+        <Image
+            Aspect="AspectFit"
+            HorizontalOptions="EndAndExpand"
+            Source="Intersecao"
+            VerticalOptions="EndAndExpand" />
+    </StackLayout>
+</ContentPage>
