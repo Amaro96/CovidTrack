@@ -11,7 +11,7 @@ namespace XFCovidTrack
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Views.MainPage());
+            MainPage = new  NavigationPage(new ResultCases());
         }
 
         protected override void OnStart()

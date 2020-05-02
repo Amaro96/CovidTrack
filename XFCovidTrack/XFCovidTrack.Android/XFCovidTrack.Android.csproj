@@ -53,10 +53,22 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Flurl">
+      <Version>3.0.0-pre3</Version>
+    </PackageReference>
+    <PackageReference Include="Flurl.Http">
+      <Version>3.0.0-pre3</Version>
+    </PackageReference>
     <PackageReference Include="Rg.Plugins.Popup">
       <Version>2.0.0.2</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.657" />
+    <PackageReference Include="Xamarin.FFImageLoading">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.FFImageLoading.Forms">
+      <Version>2.4.11.982</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>1.4.2-beta</Version>
@@ -440,42 +452,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu4.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Menu6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Pasta.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ProfileFood.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ProfileImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Rice.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\RoundedProfileImage.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\VerticalLine.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -4,9 +4,12 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:views="clr-namespace:XFCovidTrack.Views"
+    BackgroundColor="#412759"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
 
@@ -14,51 +17,130 @@
 
         <!--  Header  -->
         <views:HeaderView Margin="20,20" VerticalOptions="Start" />
-        <!--<pancakeview:PancakeView>
-            <StackLayout HorizontalOptions="CenterAndExpand">
-                <Label Text="Cases"/>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="787.225"/>
-                    <Image/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout>
-                        <Label Text="Recovered"/>
-                        <Label Text="172,319"/>
-                    </StackLayout>
-                    <BoxView BackgroundColor="Beige" HeightRequest="5" />
-                    <StackLayout>
-                        <Label Text="death"/>
-                        <Label Text="39,104"/>
-                    </StackLayout>
-                </StackLayout>
-            </StackLayout>
-        </pancakeview:PancakeView>
+        <StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="20">
-            <Label Text="Countries Records" TextColor="White"/>
-            <Label Text="More Details" TextColor="White"/>
+            <pancakeview:PancakeView
+                Margin="20"
+                BackgroundColor="#8F2FEE"
+                CornerRadius="20"
+                HeightRequest="590"
+                HorizontalOptions="CenterAndExpand"
+                Rotation="1"
+                RotationX="1"
+                VerticalOptions="Start"
+                WidthRequest="350">
+                <StackLayout
+                    Margin="0,10,0,0"
+                    HorizontalOptions="CenterAndExpand"
+                    Rotation="-1">
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="   Cases"
+                        TextColor="White" />
+                    <StackLayout
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal"
+                        Spacing="-24">
+                        <Label
+                            Margin="80,0,0,0"
+                            FontAttributes="Bold"
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="787.225"
+                            TextColor="White" />
+                        <Image HeightRequest="70" Source="Poligono" />
+                    </StackLayout>
+                    <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
+                        <StackLayout Rotation="-1">
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Body"
+                                Text="Recovered"
+                                TextColor="White" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Body"
+                                Text="172,319"
+                                TextColor="White" />
+                        </StackLayout>
+                        <BoxView
+                            Margin="50,0"
+                            BackgroundColor="Beige"
+                            WidthRequest="1" />
+                        <StackLayout>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Body"
+                                Text="death"
+                                TextColor="White" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Body"
+                                Text="39,104"
+                                TextColor="White" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </pancakeview:PancakeView>
+            <Image
+                Margin="10,0"
+                Aspect="AspectFit"
+                HeightRequest="80"
+                HorizontalOptions="EndAndExpand"
+                Source="CovidYellow"
+                TranslationY="-250" />
         </StackLayout>
 
-        <CollectionView x:Name="">
+
+        <StackLayout Margin="30,-80" Orientation="Horizontal">
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="StartAndExpand"
+                Text="Countries Records"
+                TextColor="White" />
+            <Label
+                FontSize="Body"
+                Text="More Details"
+                TextColor="White" />
+        </StackLayout>
+
+
+
+        <CollectionView
+            x:Name="listOfCountry"
+            Margin="30,100,30,20"
+            VerticalOptions="FillAndExpand">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source=""/>
-                        <StackLayout>
-                            <Label Text="{Binding caseNumbers}" TextColor="White"/>
-                            <Label Text="{Binding countrys}" TextColor="#707070"/>
+                    <StackLayout Orientation="Horizontal" Spacing="30">
+                        <ffimage:CachedImage
+                            Aspect="AspectFit"
+                            BackgroundColor="Transparent"
+                            CacheDuration="1"
+                            DownsampleToViewSize="True"
+                            Source="CovidYellow" />
+                        <StackLayout HorizontalOptions="StartAndExpand">
+                            <Label
+                                FontAttributes="Bold"
+                                Text="{Binding caseNumbers}"
+                                TextColor="White" />
+                            <Label Text="{Binding countrys}" TextColor="#707070" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="End">
-                            <Label Text="{Binding morecases}" TextColor="White"/>
-                            <Label Text="{Binding day}" TextColor="#707070"/>
+                            <Label
+                                FontAttributes="Bold"
+                                Text="{Binding morecases}"
+                                TextColor="White" />
+                            <Label Text="{Binding day}" TextColor="#707070" />
                         </StackLayout>
 
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </CollectionView>-->
+        </CollectionView>
 
     </StackLayout>
 
