@@ -81,36 +81,36 @@
 
 
     <Style x:Key="lblCases" TargetType="Label">
-        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
     <Style x:Key="lblTotalCases" TargetType="Label">
-        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="30" />
     </Style>
 
     <Style x:Key="lblRecovered" TargetType="Label">
-        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="Body" />
     </Style>
 
     <Style x:Key="lblRecoveredNumber" TargetType="Label">
-        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="Body" />
     </Style>
 
     <Style x:Key="lblDeaths" TargetType="Label">
-        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="Body" />
     </Style>
 
     <Style x:Key="lblDeathsNumbers" TargetType="Label">
-        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="Body" />
     </Style>
@@ -150,7 +150,7 @@
     <Color x:Key="MainPageBackgroundColor">#FFFFFF</Color>
     <Color x:Key="PancakeviewBackgroundColor">#8F2FEE</Color>
     <Color x:Key="FrameBackgroundColor">#593378</Color>
-    <Color x:Key="BoxBackgroundColor">#593378</Color>
+    <Color x:Key="BoxBackgroundColor">#FFFFFF</Color>
 
 
 

@@ -86,7 +86,10 @@
         <CollectionView
             x:Name="listInformation"
             HorizontalOptions="FillAndExpand"
+            ItemSizingStrategy="MeasureAllItems"
             ItemsLayout="HorizontalList"
+            SelectedItem="{Binding SelectedTagChangedCommand}"
+            SelectionMode="Single"
             VerticalOptions="FillAndExpand">
 
             <CollectionView.ItemTemplate>
@@ -125,8 +128,10 @@
                                     VerticalOptions="Center" />
 
                                 <ImageButton
+                                    x:Name="btnTrack"
                                     Aspect="AspectFit"
                                     BackgroundColor="Transparent"
+                                    Clicked="btnTrack_Clicked"
                                     HeightRequest="70"
                                     HorizontalOptions="Start"
                                     Source="track"

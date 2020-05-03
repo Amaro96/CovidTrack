@@ -10,6 +10,7 @@ using Xamarin.Forms;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using FFImageLoading.Forms.Platform;
+using Acr.UserDialogs;
 
 namespace XFCovidTrack.Droid
 {
@@ -28,6 +29,7 @@ namespace XFCovidTrack.Droid
             base.OnCreate(savedInstanceState);
 
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

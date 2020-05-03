@@ -6,15 +6,20 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using XFCovidTrack.Interfaces;
 using XFCovidTrack.ThemeResources;
+using XFCovidTrack.Views;
 
 namespace XFCovidTrack.ViewModels
 {
    public class MainPageViewModel : BaseViewModel
     {
         public Command ChangeThemeAppCommand { get; }
-        public MainPageViewModel()
+        private readonly IRestService _service;
+        public Command SelectedTagChangedCommand { get; }
+        public MainPageViewModel(IRestService restService)
         {
+            _service = restService;
             ChangeThemeAppCommand = new Command(ExecuteChangeThemeAppCommand);
+            SelectedTagChangedCommand = new Command(ExecuteSelectedCommand);
         }
         public bool AppDarkTheme
         {
@@ -35,6 +40,11 @@ namespace XFCovidTrack.ViewModels
             });
          
         }
+
+        private void ExecuteSelectedCommand()
+        {
+            Navigation.PushAsync(new ResultCases());
+        }
         public void UnsubscribeEvents()
         {
            
@@ -52,13 +62,11 @@ namespace XFCovidTrack.ViewModels
                 DependencyService.Get<IStatusBarStyle>().ChangeTextColor(darkTheme);
 
             if (darkTheme)
-            {
-             
+            {             
                 Application.Current.Resources = new DarkTheme();
             }
             else
-            {
-              
+            {         
 
                 if (Application.Current.Resources.Source != null &&
                     Application.Current.Resources.Source.OriginalString.ToLower().Contains("light"))

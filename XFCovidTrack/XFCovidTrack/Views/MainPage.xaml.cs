@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XFCovidTrack.Models;
+using XFCovidTrack.Services;
 using XFCovidTrack.ViewModels;
 
 namespace XFCovidTrack.Views
@@ -18,7 +19,7 @@ namespace XFCovidTrack.Views
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new MainPageViewModel();
+            BindingContext = viewModel = new MainPageViewModel(new RestService());
             List<CovidData> listItems = new List<CovidData>()
             {
                 new CovidData{title ="CORONAVIRUS", subTitle= "COVID-19", information = "COVID-19 is an infectious disease caused",subInformation= " by a virus.",  img="CovidYellow", BackGroundColor = "#8F2FEE"},
@@ -42,6 +43,10 @@ namespace XFCovidTrack.Views
             viewModel.OnDisappearing();
         }
 
+        private async void btnTrack_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ResultCases());
+        }
     }
 
     public class CovidData

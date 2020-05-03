@@ -45,6 +45,26 @@ namespace XFCovidTrack.ViewModels
             return false;
         }
 
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                SetProperty(ref _isBusy, value);
+            }
+        }
+
+        private bool _isBusyCountry;
+        public bool IsBusyCountry
+        {
+            get { return _isBusyCountry; }
+            set
+            {
+                SetProperty(ref _isBusyCountry, value);
+            }
+        }
+
         private bool _isTouched;
         public bool IsTouched
         {

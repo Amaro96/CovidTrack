@@ -40,18 +40,18 @@
                     <StackLayout
                         HorizontalOptions="Center"
                         Orientation="Horizontal"
-                        Spacing="-24">
+                        Spacing="-20">
                         <Label
                             Margin="80,0,0,0"
                             HorizontalOptions="CenterAndExpand"
                             Style="{DynamicResource lblTotalCases}"
-                            Text="787.225" />
+                            Text="{Binding Cases}" />
                         <Image HeightRequest="70" Source="Poligono" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-                        <StackLayout Rotation="-1">
+                        <StackLayout Rotation="-0.5">
                             <Label Style="{DynamicResource lblRecovered}" Text="Recovered" />
-                            <Label Style="{DynamicResource lblRecoveredNumber}" Text="172,319" />
+                            <Label Style="{DynamicResource lblRecoveredNumber}" Text="{Binding Recovered}" />
                         </StackLayout>
                         <BoxView
                             Margin="50,0"
@@ -60,7 +60,7 @@
                         <StackLayout>
                             <Label Style="{DynamicResource lblDeaths}" Text="death" />
 
-                            <Label Style="{DynamicResource lblDeathsNumbers}" Text="39,104" />
+                            <Label Style="{DynamicResource lblDeathsNumbers}" Text="{Binding Deaths}" />
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
@@ -97,15 +97,15 @@
                             BackgroundColor="Transparent"
                             CacheDuration="1"
                             DownsampleToViewSize="True"
-                            Source="CovidYellow" />
+                            Source="{Binding flag}" />
                         <StackLayout HorizontalOptions="StartAndExpand">
-                            <Label Style="{DynamicResource lblCasesNumbers}" Text="{Binding caseNumbers}" />
-                            <Label Style="{DynamicResource lblCountry}" Text="{Binding countrys}" />
+                            <Label Style="{DynamicResource lblCasesNumbers}" Text="{Binding cases}" />
+                            <Label Style="{DynamicResource lblCountry}" Text="{Binding country}" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="End">
-                            <Label Style="{DynamicResource lblMoreCases}" Text="{Binding morecases}" />
-                            <Label Style="{DynamicResource lblDay}" Text="{Binding day}" />
+                            <Label Style="{DynamicResource lblMoreCases}" Text="{Binding todayCases}" />
+                            <Label Style="{DynamicResource lblDay}" Text="Today" />
                         </StackLayout>
 
                     </StackLayout>
