@@ -17,10 +17,10 @@
             <ImageButton
                 x:Name="btnMyLocation"
                 BackgroundColor="Transparent"
-                HeightRequest="20"
-                HorizontalOptions="Start"
                 Clicked="btnMyLocation_Clicked"
-                Source="repetition"
+                HeightRequest="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{DynamicResource imgBtnR}"
                 VerticalOptions="Center">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
@@ -40,11 +40,18 @@
                 </VisualStateManager.VisualStateGroups>
             </ImageButton>
 
+            <Switch
+                x:Name="switchBt"
+                Margin="20,20"
+                HorizontalOptions="Center"
+                IsToggled="{Binding AppDarkTheme}"
+                Style="{DynamicResource switcToggled}" />
+
             <ImageButton
                 BackgroundColor="Transparent"
                 HeightRequest="35"
                 HorizontalOptions="EndAndExpand"
-                Source="alarme">
+                Style="{DynamicResource imgBtnA}">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal">
@@ -67,14 +74,14 @@
         <Label
             FontAttributes="Bold"
             FontSize="21"
-            HorizontalOptions="CenterAndExpand"
+            HorizontalOptions="Center"
             Text="Track Our"
             TextColor="White" />
 
         <Label
             FontAttributes="Bold"
             FontSize="21"
-            HorizontalOptions="CenterAndExpand"
+            HorizontalOptions="Center"
             Text="Enemies"
             TextColor="White" />
 

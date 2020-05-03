@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -17,63 +18,26 @@
             x:Name="switchBtn"
             Margin="20,20"
             HorizontalOptions="Start"
-            IsToggled="False"
-            OnColor="White"
-            ThumbColor="#9943EF"
+            IsToggled="{Binding AppDarkTheme}"
+            Style="{DynamicResource switcToggled}"
             Toggled="switchBtn_Toggled"
             VerticalOptions="Start" />
 
         <Label
-            FontAttributes="Bold"
-            FontSize="20"
             HorizontalOptions="CenterAndExpand"
+            Style="{DynamicResource lblVirus}"
             Text="VIRUS"
-            TextColor="White">
-            <Label.Triggers>
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
-                    TargetType="Label"
-                    Value="true">
-                    <Setter Property="TextColor" Value="White" />
-                </DataTrigger>
-
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
-                    TargetType="Label"
-                    Value="false">
-                    <Setter Property="TextColor" Value="#9943EF" />
-                </DataTrigger>
-            </Label.Triggers>
-        </Label>
+            TextColor="White" />
 
         <Label
-            FontAttributes="Bold"
-            FontSize="20-"
             HorizontalOptions="CenterAndExpand"
-            Text="TRACKER"
-            TextColor="White">
-            <Label.Triggers>
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
-                    TargetType="Label"
-                    Value="true">
-                    <Setter Property="TextColor" Value="White" />
-                </DataTrigger>
-
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
-                    TargetType="Label"
-                    Value="false">
-                    <Setter Property="TextColor" Value="#9943EF" />
-                </DataTrigger>
-            </Label.Triggers>
-        </Label>
+            Style="{DynamicResource lblTracker}"
+            Text="TRACKER" />
 
         <Label
-            FontSize="15"
             HorizontalTextAlignment="Center"
+            Style="{DynamicResource lblTrackerDan}"
             Text="Track dangerous enemies in an easy and fun way"
-            TextColor="White"
             VerticalTextAlignment="Center">
             <Label.Triggers>
                 <DataTrigger
@@ -94,8 +58,10 @@
 
 
         <ImageButton
+            x:Name="btnGetMain"
             Margin="0,170"
             BackgroundColor="Transparent"
+            Clicked="btnGetMain_Clicked"
             HeightRequest="100"
             HorizontalOptions="CenterAndExpand"
             Source="btnGet"

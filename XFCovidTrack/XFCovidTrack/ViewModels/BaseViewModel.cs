@@ -4,11 +4,18 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace XFCovidTrack.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+
+        public INavigation Navigation;
+        public BaseViewModel(INavigation navigation = null)
+        {
+            Navigation = navigation;
+        }
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName]string propertyName = null)
@@ -38,9 +45,17 @@ namespace XFCovidTrack.ViewModels
             return false;
         }
 
+        private bool _isTouched;
+        public bool IsTouched
+        {
+            get { return _isTouched; }
+            set
+            {
+                SetProperty(ref _isTouched, value);
+            }
+        }
+
+        public virtual void OnDisappearing() { }
     }
-
-
 }
 
-    

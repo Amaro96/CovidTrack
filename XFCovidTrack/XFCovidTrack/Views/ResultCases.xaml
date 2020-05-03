@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:views="clr-namespace:XFCovidTrack.Views"
-    BackgroundColor="#412759"
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
@@ -21,7 +21,7 @@
 
             <pancakeview:PancakeView
                 Margin="20"
-                BackgroundColor="#8F2FEE"
+                BackgroundColor="{StaticResource PancakeviewBackgroundColor}"
                 CornerRadius="20"
                 HeightRequest="590"
                 HorizontalOptions="CenterAndExpand"
@@ -34,51 +34,33 @@
                     HorizontalOptions="CenterAndExpand"
                     Rotation="-1">
                     <Label
-                        FontAttributes="Bold"
                         HorizontalOptions="CenterAndExpand"
-                        Text="   Cases"
-                        TextColor="White" />
+                        Style="{DynamicResource lblCases}"
+                        Text="   Cases" />
                     <StackLayout
                         HorizontalOptions="Center"
                         Orientation="Horizontal"
                         Spacing="-24">
                         <Label
                             Margin="80,0,0,0"
-                            FontAttributes="Bold"
-                            FontSize="30"
                             HorizontalOptions="CenterAndExpand"
-                            Text="787.225"
-                            TextColor="White" />
+                            Style="{DynamicResource lblTotalCases}"
+                            Text="787.225" />
                         <Image HeightRequest="70" Source="Poligono" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
                         <StackLayout Rotation="-1">
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Body"
-                                Text="Recovered"
-                                TextColor="White" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Body"
-                                Text="172,319"
-                                TextColor="White" />
+                            <Label Style="{DynamicResource lblRecovered}" Text="Recovered" />
+                            <Label Style="{DynamicResource lblRecoveredNumber}" Text="172,319" />
                         </StackLayout>
                         <BoxView
                             Margin="50,0"
-                            BackgroundColor="Beige"
+                            BackgroundColor="{DynamicResource BoxBackgroundColor}"
                             WidthRequest="1" />
                         <StackLayout>
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Body"
-                                Text="death"
-                                TextColor="White" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Body"
-                                Text="39,104"
-                                TextColor="White" />
+                            <Label Style="{DynamicResource lblDeaths}" Text="death" />
+
+                            <Label Style="{DynamicResource lblDeathsNumbers}" Text="39,104" />
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
@@ -95,15 +77,10 @@
 
         <StackLayout Margin="30,-80" Orientation="Horizontal">
             <Label
-                FontAttributes="Bold"
-                FontSize="18"
                 HorizontalOptions="StartAndExpand"
-                Text="Countries Records"
-                TextColor="White" />
-            <Label
-                FontSize="Body"
-                Text="More Details"
-                TextColor="White" />
+                Style="{DynamicResource lblCountryRecords}"
+                Text="Countries Records" />
+            <Label Style="{DynamicResource lblMoreDetails}" Text="More Details" />
         </StackLayout>
 
 
@@ -122,19 +99,13 @@
                             DownsampleToViewSize="True"
                             Source="CovidYellow" />
                         <StackLayout HorizontalOptions="StartAndExpand">
-                            <Label
-                                FontAttributes="Bold"
-                                Text="{Binding caseNumbers}"
-                                TextColor="White" />
-                            <Label Text="{Binding countrys}" TextColor="#707070" />
+                            <Label Style="{DynamicResource lblCasesNumbers}" Text="{Binding caseNumbers}" />
+                            <Label Style="{DynamicResource lblCountry}" Text="{Binding countrys}" />
                         </StackLayout>
 
                         <StackLayout HorizontalOptions="End">
-                            <Label
-                                FontAttributes="Bold"
-                                Text="{Binding morecases}"
-                                TextColor="White" />
-                            <Label Text="{Binding day}" TextColor="#707070" />
+                            <Label Style="{DynamicResource lblMoreCases}" Text="{Binding morecases}" />
+                            <Label Style="{DynamicResource lblDay}" Text="{Binding day}" />
                         </StackLayout>
 
                     </StackLayout>

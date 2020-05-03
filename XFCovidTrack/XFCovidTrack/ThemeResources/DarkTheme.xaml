@@ -1,17 +1,156 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary 
-             xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             x:Class="XFCovidTrack.ThemeResources.DarkTheme">
+<ResourceDictionary
+    x:Class="XFCovidTrack.ThemeResources.DarkTheme"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
 
 
 
-    <OnPlatform x:Key="FontAvenir" x:TypeArguments="x:String">
-        <On Platform="Android" Value="Avenir Book.ttf#Avenir Book" />
-        <On Platform="iOS" Value="Avenir Book" />
-    </OnPlatform>
+    <Style x:Key="imgBtnR" TargetType="ImageButton">
+        <Setter Property="Source" Value="repetition" />
+    </Style>
+
+    <Style x:Key="imgBtnA" TargetType="ImageButton">
+        <Setter Property="Source" Value="alarme" />
+    </Style>
+    <Style x:Key="switcToggled" TargetType="Switch">
+        <Setter Property="OnColor" Value="#9943EF" />
+        <Setter Property="ThumbColor" Value="White" />
+    </Style>
+
+    <Style x:Key="lblVirus" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblTracker" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblTrackerDan" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="15" />
+    </Style>
+
+
+    <Style x:Key="entrySearch" TargetType="Entry">
+        <Setter Property="PlaceholderColor" Value="White" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+    </Style>
+
+    <Style x:Key="lblTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="Large" />
+    </Style>
+
+    <Style x:Key="lblSubTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="Large" />
+    </Style>
+
+    <Style x:Key="lblInformation" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblSubInformation" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblEmergency" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblHowAvoid" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblCoronaVirus" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+
+    <Style x:Key="lblCases" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblTotalCases" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="30" />
+    </Style>
+
+    <Style x:Key="lblRecovered" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblRecoveredNumber" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblDeaths" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblDeathsNumbers" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblCountryRecords" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="18" />
+    </Style>
+
+    <Style x:Key="lblMoreDetails" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+    <Style x:Key="lblCasesNumbers" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblCountry" TargetType="Label">
+        <Setter Property="TextColor" Value="#6C6C6C" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblMoreCases" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblDay" TargetType="Label">
+        <Setter Property="TextColor" Value="#6C6C6C" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+
+    <Color x:Key="MainPageBackgroundColor">#412759</Color>
+    <Color x:Key="PancakeviewBackgroundColor">#8F2FEE</Color>
+    <Color x:Key="FrameBackgroundColor">#593378</Color>
+    <Color x:Key="BoxBackgroundColor">#593378</Color>
 
 </ResourceDictionary>
