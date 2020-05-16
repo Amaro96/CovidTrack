@@ -206,6 +206,7 @@
                             HeightRequest="80"
                             HorizontalOptions="Start"
                             Source="how"
+                            Command="{Binding CommandAvoidCovid}"
                             VerticalOptions="Center">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="CommonStates">

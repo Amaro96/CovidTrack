@@ -18,7 +18,6 @@ namespace XFCovidTrack.ViewModels
         private readonly IRestService _Service;
         public Command CloseWhenIsClicked { get; }
 
-
         public MyLocationViewModel(IRestService _restService)
         {
             _Service = _restService;
@@ -103,7 +102,7 @@ namespace XFCovidTrack.ViewModels
         }
 
 
-       public async Task close()
+        public async Task close()
         {
             await PopupNavigation.Instance.PopAsync();
         }
@@ -138,8 +137,8 @@ namespace XFCovidTrack.ViewModels
 
                 if (location == null)
                 {
-                 await  App.Current.MainPage.DisplayAlert("Warning", "NO GPS", "OK");
-                // await PopupNavigation.Instance.PopAsync();
+                    await PopupNavigation.Instance.PopAsync();
+                    await App.Current.MainPage.DisplayAlert("Warning", "NO GPS", "OK");
                 }
                 else
                 {
@@ -148,22 +147,22 @@ namespace XFCovidTrack.ViewModels
                     var placemark = placemarks?.FirstOrDefault();
                     if (placemark != null)
                     {
-
-                        var response = await _Service.GetTotalsByCountry(placemark.CountryCode);
-                        if (response != null)
-                        {
-                            active = response.active;
-                            cases = response.cases;
-                            deaths = response.deaths;
-                            recovered = response.recovered;
-                            todayCases = response.todayCases;
-                            CountryFlag = response.countryInfo.flag;
-                            DateToday = DateTime.Now.DayOfWeek + ", " + DateTime.Now.ToString("dd/MM/yyyy");
+                        
+                            var response = await _Service.GetTotalsByCountry(placemark.CountryCode);
+                            if (response != null)
+                            {
+                                active = response.active;
+                                cases = (int)response.cases;
+                                deaths = (int)response.deaths;
+                                recovered = (int)response.recovered;
+                                todayCases = (int)response.todayCases;
+                                CountryFlag = response.countryInfo.flag;
+                               
+                            }
                         }
+                        DateToday = DateTime.Now.DayOfWeek + ", " + DateTime.Now.ToString("dd/MM/yyyy");
                     }
-
-                }
-
+                
             }
             catch { }
             finally

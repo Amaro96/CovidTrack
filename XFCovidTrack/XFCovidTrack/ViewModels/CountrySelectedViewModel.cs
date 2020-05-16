@@ -4,9 +4,9 @@ using System.Text;
 
 namespace XFCovidTrack.ViewModels
 {
-    public class CountrySelected : BaseViewModel
+    public class CountrySelectedViewModel : BaseViewModel
     {
-        public CountrySelected()
+        public CountrySelectedViewModel()
         {
 
         }

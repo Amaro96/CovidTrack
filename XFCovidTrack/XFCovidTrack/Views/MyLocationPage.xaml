@@ -62,9 +62,7 @@
                     FontSize="Medium"
                     HorizontalOptions="CenterAndExpand"
                     Text="CORONA VIRUS IN MY COUNTRY"
-                    TextColor="Red" />
-
-
+                    TextColor="White" />
 
                 <Image
                     Aspect="AspectFit"

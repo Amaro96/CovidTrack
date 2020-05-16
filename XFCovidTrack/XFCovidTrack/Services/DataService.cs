@@ -32,6 +32,7 @@ namespace XFCovidTrack.Services
 
                         if (!string.IsNullOrWhiteSpace(json))
                         {
+                            
                             var lista = JsonConvert.DeserializeObject<IList<Country>>(json);
 
                             return lista;

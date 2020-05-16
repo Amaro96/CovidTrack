@@ -34,7 +34,7 @@
     </Style>
 
     <Style x:Key="switcToggled" TargetType="Switch">
-        <Setter Property="ThumbColor" Value="White" />
+        <Setter Property="ThumbColor" Value="#9943EF" />
         <Setter Property="OnColor" Value="#9943EF" />
     </Style>
 
@@ -185,11 +185,18 @@
         <Setter Property="FontSize" Value="Body" />
     </Style>
 
+    <Style x:Key="lblPopup" TargetType="Label">
+        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
 
     <Color x:Key="MainPageBackgroundColor">#FFFFFF</Color>
     <Color x:Key="PancakeviewBackgroundColor">#8F2FEE</Color>
     <Color x:Key="FrameBackgroundColor">#593378</Color>
     <Color x:Key="BoxBackgroundColor">#FFFFFF</Color>
     <Color x:Key="SkeletonLabelBackground">#EEEEEE</Color>
+    <Color x:Key="backgroundColorPopup">##8F2FEE</Color>
 
 </ResourceDictionary>

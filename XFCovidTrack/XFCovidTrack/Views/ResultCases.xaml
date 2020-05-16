@@ -128,12 +128,14 @@
                             <Setter Property="IsVisible" Value="True" />
                         </DataTrigger>
                     </SearchBar.Triggers>-->
+
                 </SearchBar>
                 <CollectionView
                     x:Name="listOfCountry"
                     ItemSizingStrategy="MeasureAllItems"
                     ItemsSource="{Binding countries}"
-                    SelectionChanged="listOfCountry_SelectionChanged"
+                    SelectedItem="{Binding Selection, Mode=TwoWay}"
+                    SelectionChangedCommand="{Binding SelectionCommand}"
                     SelectionMode="Single"
                     VerticalOptions="FillAndExpand">
                     <CollectionView.ItemTemplate>

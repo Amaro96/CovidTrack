@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,6 +10,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using XFCovidTrack.Interfaces;
 using XFCovidTrack.Models;
+using XFCovidTrack.Views;
 
 namespace XFCovidTrack.ViewModels
 {
@@ -16,9 +18,10 @@ namespace XFCovidTrack.ViewModels
     {
         private readonly IRestService _service;
         public ICommand refreshCommand { get; }
-        public ICommand SearchCommand { get;  }
+        public ICommand SearchCommand { get; }
+        public ICommand SelectionCommand { get; }
         public ObservableCollection<Country> countries { get; set; }
-    
+
         public ResultCasesViewModel(IRestService restService)
         {
             _service = restService;
@@ -26,11 +29,17 @@ namespace XFCovidTrack.ViewModels
 
             refreshCommand = new Command(async () => await RefreshAsync());
             SearchCommand = new Command(async () => await SearchCountry());
+            SelectionCommand = new Command(ItemSelected);
             IsVisible = false;
 
         }
 
-
+        private Country _selection;
+        public Country Selection
+        {
+            get { return _selection; }
+            set { SetProperty(ref _selection, value); }
+        }
 
         private bool _IsVisible = false;
 
@@ -42,7 +51,6 @@ namespace XFCovidTrack.ViewModels
                 SetProperty(ref _IsVisible, value);
             }
         }
-
 
         private bool _IsRefreshing = false;
 
@@ -58,7 +66,7 @@ namespace XFCovidTrack.ViewModels
 
         async Task RefreshAsync()
         {
- 
+
             IsRefreshing = true;
 
             IsVisible = true;
@@ -161,11 +169,34 @@ namespace XFCovidTrack.ViewModels
             }
         }
 
+        private string _Filter;
+
+        public string Filter
+        {
+            get { return _Filter; }
+            set
+            {
+                SetProperty(ref _Filter, value);
+            }
+        }
+
 
         private Country Country { get; set; }
         private GlobalCases GlobalCases { get; set; }
 
-        public async Task GetGlobalTotals(bool isBusyCountry = false)
+        private async void ItemSelected()
+        {
+            if (Selection != null)
+            {
+                var country = Selection;
+             
+                Selection = null;
+                await PopupNavigation.Instance.PushAsync(new CountrySelectedPoup(country));
+                Filter = string.Empty;
+            }
+        }
+
+            public async Task GetGlobalTotals(bool isBusyCountry = false)
         {
             IsBusy = true;
             IsBusyCountry = isBusyCountry;
@@ -173,7 +204,9 @@ namespace XFCovidTrack.ViewModels
             try
             {
                 var response = await _service.GetGlobalTotals();
-                SetCountryCases(response);
+                if(response != null) { SetCountryCases(response); }             
+                else  {App.Current.MainPage.DisplayAlert("Internet", "Your connection is very low to get data", "OK");
+                    return;}
             }
             catch { }
             finally
@@ -185,18 +218,17 @@ namespace XFCovidTrack.ViewModels
 
         async Task SearchCountry()
         {
- 
+
         }
 
         private async Task GetCountry(bool isBusyCountry = false)
         {
 
-
             IsBusy = true;
             IsBusyCountry = isBusyCountry;
             try
             {
-               var response = await _service.GetCountryMoreCases();
+                var response = await _service.GetCountryMoreCases();
                 if (response != null)
                 {
                     foreach (var item in response)
@@ -209,8 +241,6 @@ namespace XFCovidTrack.ViewModels
                         countries.Add(item);
 
                     }
-
-                   
 
                 }
 
@@ -240,7 +270,6 @@ namespace XFCovidTrack.ViewModels
                 Cases = response.cases;
                 Recovered = response.recovered;
                 Deaths = response.deaths;
-
 
             }
         }

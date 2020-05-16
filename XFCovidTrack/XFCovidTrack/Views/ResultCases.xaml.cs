@@ -41,13 +41,6 @@ namespace XFCovidTrack.Views
             }
         }
 
-        private void listOfCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var country = e.CurrentSelection.FirstOrDefault() as Country;
-
-            
-        }
-
         private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
