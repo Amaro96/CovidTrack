@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Acr.UserDialogs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XFCovidTrack.Interfaces;
+using XFCovidTrack.Models;
 using XFCovidTrack.Services;
 using XFCovidTrack.ViewModels;
 
@@ -19,8 +21,9 @@ namespace XFCovidTrack.Views
         public ResultCases()
         {
             InitializeComponent();
-            BindingContext = resultCasesViewModel = new ResultCasesViewModel(new RestService()); 
-            
+            BindingContext = resultCasesViewModel = new ResultCasesViewModel(new DataService());
+        
+            UserDialogs.Instance.HideLoading();
         }
 
         protected override async void OnAppearing()
@@ -28,11 +31,35 @@ namespace XFCovidTrack.Views
            await resultCasesViewModel.GetAll();
         }
 
-        protected override void OnDisappearing()
+        private void teste_Refreshing(object sender, EventArgs e)
         {
-          
+            if(teste.IsRefreshing== true) {
+                searchEntry.IsVisible = true;
+
+                teste.IsRefreshing = false;
+            
+            }
         }
 
+        private void listOfCountry_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var country = e.CurrentSelection.FirstOrDefault() as Country;
+
+            
+        }
+
+        private void searchEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                listOfCountry.ItemsSource = resultCasesViewModel.countries;
+            }
+            else
+            {
+                listOfCountry.ItemsSource = resultCasesViewModel.countries.Where(value =>
+                value.country.IndexOf(e.NewTextValue, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+        }
     }
 
   

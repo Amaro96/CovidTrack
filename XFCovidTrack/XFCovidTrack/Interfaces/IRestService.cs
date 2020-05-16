@@ -9,8 +9,8 @@ namespace XFCovidTrack.Interfaces
    public interface IRestService
     {
         Task<IEnumerable<Country>> GetGlobalCases();
-        Task<Country> GetTotalsByCountry(string countryName);
-        Task<CountryCases> GetCountryMoreCases();
+        Task<Country> GetTotalsByCountry(string countryISO);
+        Task<IEnumerable<Country>> GetCountryMoreCases();
 
         Task<GlobalCases> GetGlobalTotals();
     }

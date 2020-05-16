@@ -16,20 +16,20 @@ namespace XFCovidTrack.Models
             public int recovered { get; set; }
             public int active { get; set; }
             public int critical { get; set; }
-            public int casesPerOneMillion { get; set; }
-            public int deathsPerOneMillion { get; set; }
+            public double casesPerOneMillion { get; set; }
+            public double deathsPerOneMillion { get; set; }
             public int tests { get; set; }
-            public int testsPerOneMillion { get; set; }
+            public double testsPerOneMillion { get; set; }
             public string continent { get; set; }
         }
     
         public class Countryinfo
         {
-            public int _id { get; set; }
+            public int id { get; set; }
             public string iso2 { get; set; }
             public string iso3 { get; set; }
-            public float lat { get; set; }
-            public float _long { get; set; }
+            public double lat { get; set; }
+            public double _long { get; set; }
             public string flag { get; set; }
         }
 

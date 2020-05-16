@@ -15,10 +15,6 @@
         <Setter Property="Source" Value="heade" />
     </Style>
 
-    <Style x:Key="switcToggled" TargetType="Switch">
-        <Setter Property="OnColor" Value="White" />
-        <Setter Property="ThumbColor" Value="#9943EF" />
-    </Style>
 
     <Style x:Key="lblVirus" TargetType="Label">
         <Setter Property="TextColor" Value="#9943EF" />
@@ -35,6 +31,17 @@
     <Style x:Key="lblTrackerDan" TargetType="Label">
         <Setter Property="TextColor" Value="#9943EF" />
         <Setter Property="FontSize" Value="15" />
+    </Style>
+
+    <Style x:Key="switcToggled" TargetType="Switch">
+        <Setter Property="ThumbColor" Value="White" />
+        <Setter Property="OnColor" Value="#9943EF" />
+    </Style>
+
+
+    <Style x:Key="RefreshBackgrounColor" TargetType="RefreshView">
+        <Setter Property="BackgroundColor" Value="#9943EF" />
+        <Setter Property="RefreshColor" Value="White" />
     </Style>
 
 
@@ -146,12 +153,43 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
+    <Style
+        x:Key="backgroundImage"
+        ApplyToDerivedTypes="True"
+        TargetType="ContentPage">
+
+        <Setter Property="BackgroundImageSource">
+            <OnPlatform
+                x:TypeArguments="ImageSource"
+                Android="WelcomeLight.png"
+                iOS="WelcomeLight.png" />
+        </Setter>
+
+    </Style>
+
+    <Style x:Key="lblHeaderTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblHeaderSubTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="SearchBackgroundColor" TargetType="SearchBar">
+        <Setter Property="BackgroundColor" Value="#9943EF" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
 
     <Color x:Key="MainPageBackgroundColor">#FFFFFF</Color>
     <Color x:Key="PancakeviewBackgroundColor">#8F2FEE</Color>
     <Color x:Key="FrameBackgroundColor">#593378</Color>
     <Color x:Key="BoxBackgroundColor">#FFFFFF</Color>
-
-
+    <Color x:Key="SkeletonLabelBackground">#EEEEEE</Color>
 
 </ResourceDictionary>

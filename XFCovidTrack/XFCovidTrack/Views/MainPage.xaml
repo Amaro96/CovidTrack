@@ -15,7 +15,11 @@
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
         <!--  Header  -->
-        <views:HeaderView Margin="20,0" VerticalOptions="Start" />
+        <views:HeaderView
+            Margin="20,0"
+            SubTitleText="Enimies"
+            TitleText="Track Our"
+            VerticalOptions="Start" />
 
         <!--  Search  -->
         <Grid>
@@ -132,6 +136,7 @@
                                     Aspect="AspectFit"
                                     BackgroundColor="Transparent"
                                     Clicked="btnTrack_Clicked"
+                                    Command="{Binding SelectedCommand}"
                                     HeightRequest="70"
                                     HorizontalOptions="Start"
                                     Source="track"

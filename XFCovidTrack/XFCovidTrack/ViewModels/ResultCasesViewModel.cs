@@ -1,36 +1,98 @@
 ﻿using Acr.UserDialogs;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 using XFCovidTrack.Interfaces;
 using XFCovidTrack.Models;
 
 namespace XFCovidTrack.ViewModels
 {
-   public class ResultCasesViewModel : BaseViewModel
+    public class ResultCasesViewModel : BaseViewModel
     {
         private readonly IRestService _service;
-        public ResultCasesViewModel(IRestService restService) {
+        public ICommand refreshCommand { get; }
+        public ICommand SearchCommand { get;  }
+        public ObservableCollection<Country> countries { get; set; }
+    
+        public ResultCasesViewModel(IRestService restService)
+        {
             _service = restService;
+            countries = new ObservableCollection<Country>();
+
+            refreshCommand = new Command(async () => await RefreshAsync());
+            SearchCommand = new Command(async () => await SearchCountry());
+            IsVisible = false;
+
         }
 
+
+
+        private bool _IsVisible = false;
+
+        private bool IsVisible
+        {
+            get { return _IsVisible; }
+            set
+            {
+                SetProperty(ref _IsVisible, value);
+            }
+        }
+
+
+        private bool _IsRefreshing = false;
+
+        private bool IsRefreshing
+
+        {
+            get { return _IsRefreshing; }
+            set
+            {
+                SetProperty(ref _IsRefreshing, value);
+            }
+        }
+
+        async Task RefreshAsync()
+        {
+ 
+            IsRefreshing = true;
+
+            IsVisible = true;
+
+            IsRefreshing = false;
+        }
         private int _Cases;
 
         public int Cases
-        { get { return _Cases; }
-          set { SetProperty(ref _Cases, value); } 
+        {
+            get { return _Cases; }
+            set { SetProperty(ref _Cases, value); }
         }
 
-        private int _recovered;
-        public int recovered {
-            get {return _recovered; }
-            set {SetProperty(ref _recovered,value);
+        private string _searchText;
+
+        public string searchText
+        {
+            get { return _searchText; }
+            set { SetProperty(ref _searchText, value); }
+        }
+
+        private float _recovered;
+        public float recovered
+        {
+            get { return _recovered; }
+            set
+            {
+                SetProperty(ref _recovered, value);
             }
         }
-        private int _deaths;
+        private float _deaths;
 
-        public int deaths
+        public float deaths
         {
             get { return _deaths; }
             set
@@ -49,8 +111,8 @@ namespace XFCovidTrack.ViewModels
             }
         }
 
-        private int _cases;
-        public int cases
+        private float _cases;
+        public float cases
         {
             get { return _cases; }
             set
@@ -100,8 +162,6 @@ namespace XFCovidTrack.ViewModels
         }
 
 
-
-        private CountryCases CountryCases { get; set; }
         private Country Country { get; set; }
         private GlobalCases GlobalCases { get; set; }
 
@@ -112,10 +172,8 @@ namespace XFCovidTrack.ViewModels
 
             try
             {
-             
-                    var response = await _service.GetGlobalTotals();
-                   SetCountryCases(response);
-          
+                var response = await _service.GetGlobalTotals();
+                SetCountryCases(response);
             }
             catch { }
             finally
@@ -125,40 +183,64 @@ namespace XFCovidTrack.ViewModels
             }
         }
 
-        private async Task GetCountry() 
+        async Task SearchCountry()
         {
+ 
+        }
+
+        private async Task GetCountry(bool isBusyCountry = false)
+        {
+
+
+            IsBusy = true;
+            IsBusyCountry = isBusyCountry;
             try
             {
-                UserDialogs.Instance.Loading("Loading", null, null, true, MaskType.Gradient);
-                var response = await _service.GetGlobalCases();
+               var response = await _service.GetCountryMoreCases();
                 if (response != null)
                 {
                     foreach (var item in response)
                     {
-                        //NÃO SÃO PAÍSES, SÃO NAVIOS DE CRUZEIRO o.O
+                        //    NÃO SÃO PAÍSES, SÃO NAVIOS DE CRUZEIRO o.O
                         if (item.country.ToLower().Contains("zaandam") ||
                             item.country.ToLower().Contains("diamond princess"))
                             continue;
+
+                        countries.Add(item);
+
                     }
+
+                   
+
                 }
-                UserDialogs.Instance.HideLoading();
+
             }
             catch { }
+            finally
+            {
+                IsBusy = false;
+                IsBusyCountry = false;
+                UserDialogs.Instance.HideLoading();
+            }
         }
 
         public async Task GetAll()
         {
             await GetGlobalTotals();
+            await GetCountry();
+            IsVisible = false;
         }
         private void SetCountryCases(GlobalCases response)
         {
-            if(response != null)
+
+            if (response != null)
             {
                 GlobalCases = response;
 
                 Cases = response.cases;
                 Recovered = response.recovered;
                 Deaths = response.deaths;
+
 
             }
         }

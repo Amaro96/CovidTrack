@@ -13,6 +13,7 @@
         <Setter Property="Source" Value="repetition" />
     </Style>
 
+
     <Style x:Key="imgBtnA" TargetType="ImageButton">
         <Setter Property="Source" Value="alarme" />
     </Style>
@@ -147,10 +148,47 @@
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
+    <Style
+        x:Key="backgroundImage"
+        ApplyToDerivedTypes="True"
+        TargetType="ContentPage">
+        <Setter Property="BackgroundImageSource">
+            <OnPlatform
+                x:TypeArguments="ImageSource"
+                Android="WelcomeDark.png"
+                iOS="WelcomeDark.png" />
+        </Setter>
+    </Style>
+
+    <Style x:Key="RefreshBackgrounColor" TargetType="RefreshView">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="RefreshColor" Value="Transparent" />
+    </Style>
+
+    <Style x:Key="SearchBackgroundColor" TargetType="SearchBar">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="TextColor" Value="#9943EF" />
+        <Setter Property="FontSize" Value="Body" />
+    </Style>
+
+
+    <Style x:Key="lblHeaderTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="lblHeaderSubTitle" TargetType="Label">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
 
     <Color x:Key="MainPageBackgroundColor">#412759</Color>
     <Color x:Key="PancakeviewBackgroundColor">#8F2FEE</Color>
     <Color x:Key="FrameBackgroundColor">#593378</Color>
     <Color x:Key="BoxBackgroundColor">#593378</Color>
+    <Color x:Key="SkeletonLabelBackground">#EEEEEE</Color>
 
 </ResourceDictionary>

@@ -14,20 +14,12 @@
 
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-        <Switch
-            x:Name="switchBtn"
-            Margin="20,20"
-            HorizontalOptions="Start"
-            IsToggled="{Binding AppDarkTheme}"
-            Style="{DynamicResource switcToggled}"
-            Toggled="switchBtn_Toggled"
-            VerticalOptions="Start" />
 
         <Label
+            Margin="0,70,0,0"
             HorizontalOptions="CenterAndExpand"
             Style="{DynamicResource lblVirus}"
-            Text="VIRUS"
-            TextColor="White" />
+            Text="COVID-19" />
 
         <Label
             HorizontalOptions="CenterAndExpand"
@@ -38,23 +30,7 @@
             HorizontalTextAlignment="Center"
             Style="{DynamicResource lblTrackerDan}"
             Text="Track dangerous enemies in an easy and fun way"
-            VerticalTextAlignment="Center">
-            <Label.Triggers>
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
-                    TargetType="Label"
-                    Value="true">
-                    <Setter Property="TextColor" Value="White" />
-                </DataTrigger>
-
-                <DataTrigger
-                    Binding="{Binding Source={x:Reference switchBtn}, Path=IsToggled}"
-                    TargetType="Label"
-                    Value="false">
-                    <Setter Property="TextColor" Value="#9943EF" />
-                </DataTrigger>
-            </Label.Triggers>
-        </Label>
+            VerticalTextAlignment="Center" />
 
 
         <ImageButton
@@ -85,9 +61,10 @@
         </ImageButton>
 
         <Image
-            Aspect="AspectFit"
-            HorizontalOptions="EndAndExpand"
+            HorizontalOptions="CenterAndExpand"
             Source="Intersecao"
             VerticalOptions="EndAndExpand" />
+
+
     </StackLayout>
 </ContentPage>

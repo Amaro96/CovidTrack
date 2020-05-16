@@ -15,6 +15,55 @@ namespace XFCovidTrack.Views
     public partial class HeaderView : ContentView
     {
         TesteViewModel _TesteViewModel;
+        public static readonly BindableProperty TitleTextProperty = BindableProperty.Create(
+            propertyName: "Title",
+            returnType: typeof(string),
+            declaringType: typeof(HeaderView),
+            defaultValue: "",
+            defaultBindingMode: BindingMode.TwoWay,
+            propertyChanged: TitleTextPropertyChanged);
+
+
+        public string TitleText {
+
+            get { return base.GetValue(TitleTextProperty).ToString(); }
+
+            set { base.SetValue(TitleTextProperty, value); }
+        }
+
+
+        private static void TitleTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (HeaderView)bindable;
+            control.title.Text = newValue.ToString();
+        }
+
+
+        public static readonly BindableProperty SubTitleTextProperty = BindableProperty.Create(
+            propertyName: "SubTitle",
+            returnType: typeof(string),
+            declaringType: typeof(HeaderView),
+            defaultValue: "",
+            defaultBindingMode: BindingMode.TwoWay,
+            propertyChanged: SubTitleTextPropertyChanged);
+
+
+        public string SubTitleText
+        {
+
+            get { return base.GetValue(SubTitleTextProperty).ToString(); }
+
+            set { base.SetValue(SubTitleTextProperty, value); }
+        }
+
+
+        private static void SubTitleTextPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var control = (HeaderView)bindable;
+            control.subTitle.Text = newValue.ToString();
+        }
+
+
         public HeaderView()
         {
             InitializeComponent();

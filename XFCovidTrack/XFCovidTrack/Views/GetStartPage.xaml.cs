@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XFCovidTrack.Services;
 using XFCovidTrack.ViewModels;
 
 namespace XFCovidTrack.Views
@@ -14,21 +15,23 @@ namespace XFCovidTrack.Views
     public partial class GetStartPage : ContentPage
     {
         TesteViewModel _TesteViewModel;
+        MainPageViewModel viewModel;
         public GetStartPage()
         {
             InitializeComponent();
-            BindingContext = _TesteViewModel =new  TesteViewModel();
-            switchBtn.Toggled += (sender, e) =>
-            {
-
-                _TesteViewModel.ChangeAppThemeCommand.Execute(null);
-            };
+            BindingContext = viewModel = new MainPageViewModel(new DataService());
 
         }
 
-        private void switchBtn_Toggled(object sender, ToggledEventArgs e)
+        protected override async void OnAppearing()
         {
-            
+            viewModel.SubscribeChangeLanguage();
+            await viewModel.GetAll();
+        }
+
+        protected override void OnDisappearing()
+        {
+            viewModel.OnDisappearing();
         }
 
         private async void btnGetMain_Clicked(object sender, EventArgs e)

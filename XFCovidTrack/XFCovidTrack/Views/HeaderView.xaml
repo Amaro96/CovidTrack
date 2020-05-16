@@ -72,18 +72,14 @@
         </StackLayout>
 
         <Label
-            FontAttributes="Bold"
-            FontSize="21"
+            x:Name="title"
             HorizontalOptions="Center"
-            Text="Track Our"
-            TextColor="White" />
+            Style="{DynamicResource lblHeaderTitle}" />
 
         <Label
-            FontAttributes="Bold"
-            FontSize="21"
+            x:Name="subTitle"
             HorizontalOptions="Center"
-            Text="Enemies"
-            TextColor="White" />
+            Style="{DynamicResource lblHeaderSubTitle}" />
 
     </StackLayout>
 

@@ -19,7 +19,7 @@ namespace XFCovidTrack.Views
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new MainPageViewModel(new RestService());
+            BindingContext = viewModel = new MainPageViewModel(new DataService());
             List<CovidData> listItems = new List<CovidData>()
             {
                 new CovidData{title ="CORONAVIRUS", subTitle= "COVID-19", information = "COVID-19 is an infectious disease caused",subInformation= " by a virus.",  img="CovidYellow", BackGroundColor = "#8F2FEE"},

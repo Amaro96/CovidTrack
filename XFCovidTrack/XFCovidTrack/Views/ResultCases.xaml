@@ -3,10 +3,12 @@
     x:Class="XFCovidTrack.Views.ResultCases"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:XFCovidTrack.behavior"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pancakeview="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:skeleton="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton"
     xmlns:views="clr-namespace:XFCovidTrack.Views"
     BackgroundColor="{DynamicResource MainPageBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
@@ -16,7 +18,11 @@
     <StackLayout>
 
         <!--  Header  -->
-        <views:HeaderView Margin="20,20" VerticalOptions="Start" />
+        <views:HeaderView
+            Margin="20,20"
+            SubTitleText="Updates"
+            TitleText="Today"
+            VerticalOptions="Start" />
         <StackLayout>
 
             <pancakeview:PancakeView
@@ -43,24 +49,37 @@
                         Spacing="-20">
                         <Label
                             Margin="80,0,0,0"
+                            skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
+                            skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
+                            skeleton:Skeleton.IsBusy="{Binding IsBusy}"
                             HorizontalOptions="CenterAndExpand"
                             Style="{DynamicResource lblTotalCases}"
-                            Text="{Binding Cases}" />
+                            Text="{Binding Cases, StringFormat='{0:N0}'}" />
                         <Image HeightRequest="70" Source="Poligono" />
                     </StackLayout>
                     <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
-                        <StackLayout Rotation="-0.5">
+                        <StackLayout HorizontalOptions="Center" Rotation="-0.5">
                             <Label Style="{DynamicResource lblRecovered}" Text="Recovered" />
-                            <Label Style="{DynamicResource lblRecoveredNumber}" Text="{Binding Recovered}" />
+                            <Label
+                                skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
+                                skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
+                                skeleton:Skeleton.IsBusy="{Binding IsBusy}"
+                                Style="{DynamicResource lblRecoveredNumber}"
+                                Text="{Binding Recovered, StringFormat='{0:N0}'}" />
                         </StackLayout>
                         <BoxView
                             Margin="50,0"
                             BackgroundColor="{DynamicResource BoxBackgroundColor}"
                             WidthRequest="1" />
-                        <StackLayout>
-                            <Label Style="{DynamicResource lblDeaths}" Text="death" />
+                        <StackLayout HorizontalOptions="Center">
+                            <Label Style="{DynamicResource lblDeaths}" Text="Death" />
 
-                            <Label Style="{DynamicResource lblDeathsNumbers}" Text="{Binding Deaths}" />
+                            <Label
+                                skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
+                                skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
+                                skeleton:Skeleton.IsBusy="{Binding IsBusy}"
+                                Style="{DynamicResource lblDeathsNumbers}"
+                                Text="{Binding Deaths, StringFormat='{0:N0}'}" />
                         </StackLayout>
                     </StackLayout>
                 </StackLayout>
@@ -84,34 +103,70 @@
         </StackLayout>
 
 
-
-        <CollectionView
-            x:Name="listOfCountry"
+        <RefreshView
+            x:Name="teste"
             Margin="30,100,30,20"
-            VerticalOptions="FillAndExpand">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Orientation="Horizontal" Spacing="30">
-                        <ffimage:CachedImage
-                            Aspect="AspectFit"
-                            BackgroundColor="Transparent"
-                            CacheDuration="1"
-                            DownsampleToViewSize="True"
-                            Source="{Binding flag}" />
-                        <StackLayout HorizontalOptions="StartAndExpand">
-                            <Label Style="{DynamicResource lblCasesNumbers}" Text="{Binding cases}" />
-                            <Label Style="{DynamicResource lblCountry}" Text="{Binding country}" />
-                        </StackLayout>
+            Command="{Binding RefreshCommand}"
+            Refreshing="teste_Refreshing"
+            Style="{DynamicResource RefreshBackgrounColor}">
 
-                        <StackLayout HorizontalOptions="End">
-                            <Label Style="{DynamicResource lblMoreCases}" Text="{Binding todayCases}" />
-                            <Label Style="{DynamicResource lblDay}" Text="Today" />
-                        </StackLayout>
+            <StackLayout>
+                <SearchBar
+                    x:Name="searchEntry"
+                    CancelButtonColor="Red"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="False"
+                    Style="{DynamicResource SearchBackgroundColor}"
+                    Text="{Binding Filter}"
+                    TextChanged="searchEntry_TextChanged">
 
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    <!--<SearchBar.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference teste}, Path=IsRefreshing}"
+                            TargetType="SearchBar"
+                            Value="true">
+                            <Setter Property="IsVisible" Value="True" />
+                        </DataTrigger>
+                    </SearchBar.Triggers>-->
+                </SearchBar>
+                <CollectionView
+                    x:Name="listOfCountry"
+                    ItemSizingStrategy="MeasureAllItems"
+                    ItemsSource="{Binding countries}"
+                    SelectionChanged="listOfCountry_SelectionChanged"
+                    SelectionMode="Single"
+                    VerticalOptions="FillAndExpand">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout
+                                Margin="10,10"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="30"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Aspect="AspectFit"
+                                    BackgroundColor="Transparent"
+                                    HeightRequest="50"
+                                    Source="{Binding countryInfo.flag}"
+                                    VerticalOptions="Center"
+                                    WidthRequest="80" />
+                                <StackLayout HorizontalOptions="StartAndExpand" VerticalOptions="Center">
+                                    <Label Style="{DynamicResource lblCasesNumbers}" Text="{Binding cases, StringFormat='{0:N0}'}" />
+                                    <Label Style="{DynamicResource lblCountry}" Text="{Binding country}" />
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="End" VerticalOptions="Center">
+                                    <Label Style="{DynamicResource lblMoreCases}" Text="{Binding todayCases, StringFormat='{0:N0}'}" />
+                                    <Label Style="{DynamicResource lblDay}" Text="Today" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </RefreshView>
 
     </StackLayout>
 

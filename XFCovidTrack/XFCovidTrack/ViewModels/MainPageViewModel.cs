@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using XFCovidTrack.Interfaces;
@@ -14,12 +15,12 @@ namespace XFCovidTrack.ViewModels
     {
         public Command ChangeThemeAppCommand { get; }
         private readonly IRestService _service;
-        public Command SelectedTagChangedCommand { get; }
+        public ICommand SelectedCommand { get; }
         public MainPageViewModel(IRestService restService)
         {
             _service = restService;
             ChangeThemeAppCommand = new Command(ExecuteChangeThemeAppCommand);
-            SelectedTagChangedCommand = new Command(ExecuteSelectedCommand);
+            SelectedCommand = new Command(async()=> await ExecuteSelectedCommand());
         }
         public bool AppDarkTheme
         {
@@ -41,9 +42,12 @@ namespace XFCovidTrack.ViewModels
          
         }
 
-        private void ExecuteSelectedCommand()
+        public async Task ExecuteSelectedCommand()
         {
-            Navigation.PushAsync(new ResultCases());
+            if (CheckConnectivity())
+                await Navigation.PushAsync(new ResultCases());
+            else
+                App.Current.MainPage.DisplayAlert("Warning", "Check your Connection", "OK").Wait();
         }
         public void UnsubscribeEvents()
         {
@@ -55,6 +59,8 @@ namespace XFCovidTrack.ViewModels
         {
             SetDarkTheme(true);
         }
+
+      
 
         void SetDarkTheme(bool darkTheme)
         {
