@@ -61,7 +61,7 @@
                 <Label
                     FontSize="Medium"
                     HorizontalOptions="CenterAndExpand"
-                    Text="CORONA VIRUS IN MY COUNTRY"
+                    Text="CORONA VIRUS NO MEU PAÍS"
                     TextColor="White" />
 
                 <Image
@@ -82,7 +82,7 @@
                 <Label
                     FontSize="25"
                     HorizontalOptions="Center"
-                    Text="Confirmed cases"
+                    Text="Casos Confirmados"
                     TextColor="White" />
 
                 <StackLayout
@@ -104,7 +104,7 @@
                         <Label
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
-                            Text="Active"
+                            Text="Activos"
                             TextColor="White" />
                     </StackLayout>
                     <BoxView
@@ -127,7 +127,7 @@
                         <Label
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
-                            Text="Recovered"
+                            Text="Recuperados"
                             TextColor="White" />
                     </StackLayout>
                     <BoxView
@@ -150,7 +150,7 @@
                         <Label
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
-                            Text="Deaths"
+                            Text="Mortes"
                             TextColor="White" />
                     </StackLayout>
                 </StackLayout>

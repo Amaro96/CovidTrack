@@ -13,8 +13,16 @@ namespace XFCovidTrack
         public App()
         {
             InitializeComponent();
+            if(App.Current.Properties.ContainsKey("Main") == false)
+            {
 
             MainPage = new  NavigationPage(new GetStartPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new XFCovidTrack.Views.MainPage());
+            }
+
         }
 
         protected override void OnStart()

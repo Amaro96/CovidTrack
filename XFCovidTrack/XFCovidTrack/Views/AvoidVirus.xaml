@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFCovidTrack.Views.AvoidVirus"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:XFCovidTrack.Views"
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+    <StackLayout VerticalOptions="FillAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <views:HeaderView
+                Grid.Row="0"
+                Margin="20,0"
+                SubTitleText="Inimigos"
+                TitleText="Acompanhe os nossos"
+                VerticalOptions="Start" />
+
+            <CollectionView
+                x:Name="listOfServicesAvoid"
+                Grid.Row="1"
+                Margin="12,12,12,0"
+                ItemSizingStrategy="MeasureAllItems"
+                SelectedItem="{Binding Selection, Mode=TwoWay}"
+                SelectionChanged="listOfServicesAvoid_SelectionChanged"
+                SelectionMode="Single"
+                VerticalOptions="CenterAndExpand">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="12" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+
+                        <Frame
+                            BackgroundColor="#593378"
+                            CornerRadius="20"
+                            HasShadow="True"
+                            HeightRequest="80"
+                            HorizontalOptions="FillAndExpand">
+
+                            <StackLayout
+                                Margin="5,5"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="100"
+                                    HorizontalOptions="Start"
+                                    Source="{Binding Img}" />
+                                <Label
+                                    Margin="20,0"
+                                    FontSize="25"
+                                    Text="{Binding Type}"
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </StackLayout>
+
+</ContentPage>

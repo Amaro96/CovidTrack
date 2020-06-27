@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFCovidTrack.Views.PreventionPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:XFCovidTrack.Views"
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+
+    <StackLayout VerticalOptions="FillAndExpand">
+
+        <views:HeaderView
+            Margin="20,0"
+            SubTitleText=""
+            TitleText="Evite ficar doente"
+            VerticalOptions="Start" />
+        <Frame
+            Margin="20,0"
+            BackgroundColor="#593378"
+            CornerRadius="20"
+            HasShadow="True"
+            HeightRequest="90"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout Margin="5,5" Orientation="Horizontal">
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start"
+                    Source="doctor" />
+                <StackLayout VerticalOptions="Center">
+                    <Label Text="A melhor maneira de prevenir." TextColor="White" />
+                    <Label Text="evitar ser exposto a esse vírus" TextColor="White" />
+                    <Label
+                        FontAttributes="Bold"
+                        Text="Fique em casa, fique seguro."
+                        TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Prevenção"
+            TextColor="White" />
+        <CollectionView
+            x:Name="listOfPrevention"
+            Grid.Row="1"
+            Margin="20,0"
+            ItemSizingStrategy="MeasureAllItems"
+            SelectedItem="{Binding Selection, Mode=TwoWay}"
+            SelectionMode="Single"
+            VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="12" Orientation="Vertical" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                        <StackLayout Margin="30,0" Orientation="Horizontal">
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="70"
+                                HorizontalOptions="StartAndExpand"
+                                Source="{Binding startImg}" />
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="70"
+                                HorizontalOptions="End"
+                                Source="{Binding endImg}" />
+                        </StackLayout>
+                        <Frame
+                            BackgroundColor="#593378"
+                            CornerRadius="20"
+                            HasShadow="True"
+                            HeightRequest="50"
+                            HorizontalOptions="FillAndExpand">
+
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="FillAndExpand">
+
+                                <Label
+                                    FontSize="15"
+                                    HorizontalOptions="StartAndExpand"
+                                    MaxLines="2"
+                                    Text="{Binding startText}"
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
+                                <Label
+                                    FontSize="15"
+                                    MaxLines="2"
+                                    Text="{Binding endText}"
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Label
+            Margin="20,0"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Transmissão"
+            TextColor="White" />
+        <Image
+            Source="transmissao"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="500" />
+    </StackLayout>
+</ContentPage>

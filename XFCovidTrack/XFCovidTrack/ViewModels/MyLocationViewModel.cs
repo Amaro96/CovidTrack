@@ -145,10 +145,10 @@ namespace XFCovidTrack.ViewModels
                     var placemarks = await Geocoding.GetPlacemarksAsync(location);
 
                     var placemark = placemarks?.FirstOrDefault();
-                    if (placemark != null)
+                    if (placemark == null)
                     {
                         
-                            var response = await _Service.GetTotalsByCountry(placemark.CountryCode);
+                            var response = await _Service.GetTotalsByCountry("AO");
                             if (response != null)
                             {
                                 active = response.active;

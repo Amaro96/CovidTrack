@@ -20,8 +20,8 @@
         <!--  Header  -->
         <views:HeaderView
             Margin="20,20"
-            SubTitleText="Updates"
-            TitleText="Today"
+            SubTitleText="de hoje"
+            TitleText="Actualizações"
             VerticalOptions="Start" />
         <StackLayout>
 
@@ -42,7 +42,7 @@
                     <Label
                         HorizontalOptions="CenterAndExpand"
                         Style="{DynamicResource lblCases}"
-                        Text="   Cases" />
+                        Text="   Casos" />
                     <StackLayout
                         HorizontalOptions="Center"
                         Orientation="Horizontal"
@@ -59,7 +59,7 @@
                     </StackLayout>
                     <StackLayout HorizontalOptions="Start" Orientation="Horizontal">
                         <StackLayout HorizontalOptions="Center" Rotation="-0.5">
-                            <Label Style="{DynamicResource lblRecovered}" Text="Recovered" />
+                            <Label Style="{DynamicResource lblRecovered}" Text="Recuperados" />
                             <Label
                                 skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
                                 skeleton:Skeleton.BackgroundColor="{DynamicResource SkeletonLabelBackground}"
@@ -72,7 +72,7 @@
                             BackgroundColor="{DynamicResource BoxBackgroundColor}"
                             WidthRequest="1" />
                         <StackLayout HorizontalOptions="Center">
-                            <Label Style="{DynamicResource lblDeaths}" Text="Death" />
+                            <Label Style="{DynamicResource lblDeaths}" Text="Mortess" />
 
                             <Label
                                 skeleton:Skeleton.Animation="{skeleton:DefaultAnimation Fade}"
@@ -98,8 +98,8 @@
             <Label
                 HorizontalOptions="StartAndExpand"
                 Style="{DynamicResource lblCountryRecords}"
-                Text="Countries Records" />
-            <Label Style="{DynamicResource lblMoreDetails}" Text="More Details" />
+                Text="País com recorde" />
+            <Label Style="{DynamicResource lblMoreDetails}" Text="Mais Detalhes" />
         </StackLayout>
 
 
@@ -116,6 +116,7 @@
                     CancelButtonColor="Red"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
+                    Placeholder="Pesquise o país"
                     Style="{DynamicResource SearchBackgroundColor}"
                     Text="{Binding Filter}"
                     TextChanged="searchEntry_TextChanged">
@@ -160,7 +161,7 @@
 
                                 <StackLayout HorizontalOptions="End" VerticalOptions="Center">
                                     <Label Style="{DynamicResource lblMoreCases}" Text="{Binding todayCases, StringFormat='{0:N0}'}" />
-                                    <Label Style="{DynamicResource lblDay}" Text="Today" />
+                                    <Label Style="{DynamicResource lblDay}" Text="Hoje" />
                                 </StackLayout>
 
                             </StackLayout>

@@ -19,10 +19,11 @@ namespace XFCovidTrack.Views
         public MainPage()
         {
             InitializeComponent();
+            
             BindingContext = viewModel = new MainPageViewModel(new DataService());
             List<CovidData> listItems = new List<CovidData>()
             {
-                new CovidData{title ="CORONAVIRUS", subTitle= "COVID-19", information = "COVID-19 is an infectious disease caused",subInformation= " by a virus.",  img="CovidYellow", BackGroundColor = "#8F2FEE"},
+                new CovidData{title ="CORONAVIRUS", subTitle= "COVID-19", information = "(COVID-19) é uma doença infecciosa",subInformation= " causada por um novo vírus.",  img="CovidYellow", BackGroundColor = "#8F2FEE"},
                 new CovidData{title ="MRSA", subTitle= "VIRUS",information = "COVID-19 is an infectious disease caused",subInformation= " a new virus.",img="covidAzul", BackGroundColor = "#2D1048"},
 
 
@@ -43,11 +44,39 @@ namespace XFCovidTrack.Views
             viewModel.OnDisappearing();
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+
+            Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+
+                    var result = await this.DisplayAlert("Atenção", "Tem a certeza que deseja sair?", "Sim", "Não");
+
+                    if (result)
+                    {
+
+                        base.OnBackButtonPressed();
+                        System.Environment.Exit(0);
+                    }
+                });
+            });
+
+            return true;
+        }
+
         private async void btnTrack_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ResultCases());
         }
+
+        private async void btnVoid_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AvoidVirus());
+        }
     }
+
 
     public class CovidData
     {

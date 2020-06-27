@@ -17,8 +17,8 @@
         <!--  Header  -->
         <views:HeaderView
             Margin="20,0"
-            SubTitleText="Enimies"
-            TitleText="Track Our"
+            SubTitleText="Inimigos"
+            TitleText="Acompanhe os nossos"
             VerticalOptions="Start" />
 
         <!--  Search  -->
@@ -51,7 +51,7 @@
                         Margin="10,0"
                         HorizontalOptions="FillAndExpand"
                         HorizontalTextAlignment="Start"
-                        Placeholder="Saerch Virus"
+                        Placeholder="Pesquise o Virus"
                         Style="{DynamicResource entrySearch}"
                         VerticalOptions="Center"
                         VerticalTextAlignment="Center" />
@@ -107,10 +107,9 @@
                             CornerRadius="30,20,40,40"
                             HeightRequest="220"
                             HorizontalOptions="FillAndExpand"
-                            Rotation="3"
                             VerticalOptions="FillAndExpand">
 
-                            <StackLayout Margin="20" Rotation="-3">
+                            <StackLayout Margin="20">
 
                                 <Label
                                     HorizontalOptions="Center"
@@ -139,7 +138,7 @@
                                     Command="{Binding SelectedCommand}"
                                     HeightRequest="70"
                                     HorizontalOptions="Start"
-                                    Source="track"
+                                    Source="Acompanhe"
                                     VerticalOptions="Center">
                                     <VisualStateManager.VisualStateGroups>
                                         <VisualStateGroup x:Name="CommonStates">
@@ -178,7 +177,7 @@
                 Margin="20,15"
                 FontSize="18"
                 Style="{DynamicResource lblEmergency}"
-                Text="Emergency Guied " />
+                Text="Guía de Emergência" />
 
             <Frame
                 Margin="20,0"
@@ -192,7 +191,7 @@
                         <Label
                             FontSize="18"
                             Style="{DynamicResource lblHowAvoid}"
-                            Text="How To Avoid " />
+                            Text="Como evitar" />
 
                         <Label
                             FontSize="20"
@@ -201,11 +200,13 @@
 
 
                         <ImageButton
+                            x:Name="btnVoid"
                             Aspect="AspectFit"
+                            Clicked="btnVoid_Clicked"
                             BackgroundColor="Transparent"
                             HeightRequest="80"
                             HorizontalOptions="Start"
-                            Source="how"
+                            Source="como"
                             Command="{Binding CommandAvoidCovid}"
                             VerticalOptions="Center">
                             <VisualStateManager.VisualStateGroups>

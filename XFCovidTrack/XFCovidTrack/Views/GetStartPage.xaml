@@ -40,7 +40,7 @@
             Clicked="btnGetMain_Clicked"
             HeightRequest="100"
             HorizontalOptions="CenterAndExpand"
-            Source="btnGet"
+            Source="Iniciar"
             VerticalOptions="Center">
             <VisualStateManager.VisualStateGroups>
                 <VisualStateGroup x:Name="CommonStates">

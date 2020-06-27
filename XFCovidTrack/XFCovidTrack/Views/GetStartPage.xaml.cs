@@ -36,7 +36,9 @@ namespace XFCovidTrack.Views
 
         private async void btnGetMain_Clicked(object sender, EventArgs e)
         {
-          await  Navigation.PushAsync(new MainPage());
+            App.Current.Properties["Main"] = "activo";
+           await  Navigation.PushAsync(new MainPage());
+            Navigation.RemovePage(this);
         }
     }
 }

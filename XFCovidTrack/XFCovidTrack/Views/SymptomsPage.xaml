@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFCovidTrack.Views.SymptomsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:XFCovidTrack.Views"
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+
+
+
+    <StackLayout VerticalOptions="FillAndExpand">
+
+        <views:HeaderView
+            Margin="20,0"
+            SubTitleText=""
+            TitleText="Sintomas e Testes"
+            VerticalOptions="Start" />
+        <Frame
+            Margin="20,0"
+            BackgroundColor="#593378"
+            CornerRadius="20"
+            HasShadow="True"
+            HeightRequest="100"
+            HorizontalOptions="FillAndExpand">
+            <StackLayout Margin="5,5" Orientation="Horizontal">
+                <Image
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start"
+                    Source="contato" />
+                <StackLayout VerticalOptions="Center">
+                    <Label
+                        FontAttributes="Bold"
+                        Text="Ligue para um doctor."
+                        TextColor="White" />
+                    <Label Text="Se acha que esteve exposto ao vírus COVID-19" TextColor="White" />
+                    <Label
+                        FontAttributes="Bold"
+                        Text="Contacte agora via online"
+                        TextColor="White" />
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+        <Label
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Sintomas"
+            TextColor="White" />
+        <CollectionView
+            x:Name="listOfSymptoms"
+            Grid.Row="1"
+            Margin="20,0"
+            ItemSizingStrategy="MeasureAllItems"
+            SelectedItem="{Binding Selection, Mode=TwoWay}"
+            SelectionMode="Single"
+            VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout ItemSpacing="12" Orientation="Horizontal" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+
+                        <Frame
+                            BackgroundColor="#593378"
+                            CornerRadius="20"
+                            HasShadow="True"
+                            HeightRequest="120"
+                            HorizontalOptions="FillAndExpand">
+
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="90"
+                                    Source="{Binding typeCase}" />
+                                <Label
+                                    FontSize="15"
+                                    HorizontalTextAlignment="Center"
+                                    MaxLines="2"
+                                    Text="{Binding typeCaseText}"
+                                    TextColor="White"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <!--<Label
+            Margin="20,0"
+            FontAttributes="Bold"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Transmissão"
+            TextColor="White" />
+        <Image
+            Source="transmissao"
+            VerticalOptions="EndAndExpand"
+            WidthRequest="500" />-->
+    </StackLayout>
+</ContentPage>
