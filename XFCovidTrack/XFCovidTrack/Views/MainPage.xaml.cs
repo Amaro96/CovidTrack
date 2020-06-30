@@ -73,7 +73,7 @@ namespace XFCovidTrack.Views
 
         private async void btnVoid_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AvoidVirus());
+          //  await Navigation.PushAsync(new AvoidVirus());
         }
     }
 

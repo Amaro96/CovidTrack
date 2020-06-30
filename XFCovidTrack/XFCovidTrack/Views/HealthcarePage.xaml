@@ -3,15 +3,57 @@
     x:Class="XFCovidTrack.Views.HealthcarePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{DynamicResource MainPageBackgroundColor}"
+    NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" />
-        </StackLayout>
-    </ContentPage.Content>
+
+    <StackLayout>
+        <chart:SfChart>
+
+            <chart:SfChart.Legend>
+                <chart:ChartLegend>
+                    <chart:ChartLegend.LabelStyle>
+                        <chart:ChartLegendLabelStyle Font="15" />
+                    </chart:ChartLegend.LabelStyle>
+                </chart:ChartLegend>
+            </chart:SfChart.Legend>
+
+            <chart:SfChart.Series >
+                <chart:PieSeries
+                    
+                    EnableAnimation="True"
+                    EnableTooltip="True"
+                    ItemsSource="{Binding graphyCountries}"
+                    LegendIcon="SeriesType"
+                    XBindingPath="continent"
+                    YBindingPath="qtd">
+                    <chart:PieSeries.DataMarker>
+                        <chart:ChartDataMarker LabelContent="Percentage">
+                            <chart:ChartDataMarker.LabelStyle>
+                                <chart:DataMarkerLabelStyle Font="Bold,14" LabelPosition="Auto" />
+                            </chart:ChartDataMarker.LabelStyle>
+
+                        </chart:ChartDataMarker>
+                    </chart:PieSeries.DataMarker>
+
+                    <chart:PieSeries.ColorModel>
+                        <chart:ChartColorModel Palette="Custom">
+                            <chart:ChartColorModel.CustomBrushes>
+                                <Color>#FFF34</Color>
+                                <Color>#FF34</Color>
+                                <Color>#FF39</Color>
+                            </chart:ChartColorModel.CustomBrushes>
+                        </chart:ChartColorModel>
+                    </chart:PieSeries.ColorModel>
+                </chart:PieSeries>
+
+            </chart:SfChart.Series>
+
+        </chart:SfChart>
+
+
+    </StackLayout>
 </ContentPage>

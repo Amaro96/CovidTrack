@@ -116,7 +116,7 @@
                     CancelButtonColor="Red"
                     HorizontalOptions="FillAndExpand"
                     IsVisible="False"
-                    Placeholder="Pesquise o país"
+                    Placeholder="País ou Continente"
                     Style="{DynamicResource SearchBackgroundColor}"
                     Text="{Binding Filter}"
                     TextChanged="searchEntry_TextChanged">
@@ -131,6 +131,7 @@
                     </SearchBar.Triggers>-->
 
                 </SearchBar>
+                <Label x:Name="lblcasos" />
                 <CollectionView
                     x:Name="listOfCountry"
                     ItemSizingStrategy="MeasureAllItems"

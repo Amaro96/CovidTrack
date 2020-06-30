@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1051417866624",
+    "firebase_url": "https://sample-notification-2c412.firebaseio.com",
+    "project_id": "sample-notification-2c412",
+    "storage_bucket": "sample-notification-2c412.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051417866624:android:bbf0d29a2bdd4ed32ad165",
+        "android_client_info": {
+          "package_name": "com.companyname.xfcovidtrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051417866624-odjn2djs61m8jh017gvh82bas0gofvru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0CuEqIvxfS0Yx3GJ2qyClsL_4KEqWjZM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051417866624-odjn2djs61m8jh017gvh82bas0gofvru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

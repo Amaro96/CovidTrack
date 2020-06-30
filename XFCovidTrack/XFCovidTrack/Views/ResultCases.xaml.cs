@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,22 +22,24 @@ namespace XFCovidTrack.Views
         {
             InitializeComponent();
             BindingContext = resultCasesViewModel = new ResultCasesViewModel(new DataService());
-        
-            UserDialogs.Instance.HideLoading();
+            
+         //   UserDialogs.Instance.HideLoading();
         }
 
         protected override async void OnAppearing()
         {
-           await resultCasesViewModel.GetAll();
+            await resultCasesViewModel.GetAll();
         }
 
         private void teste_Refreshing(object sender, EventArgs e)
         {
-            if(teste.IsRefreshing== true) {
+            if (teste.IsRefreshing == true)
+            {
                 searchEntry.IsVisible = true;
 
                 teste.IsRefreshing = false;
-            
+                
+
             }
         }
 
@@ -50,10 +52,28 @@ namespace XFCovidTrack.Views
             else
             {
                 listOfCountry.ItemsSource = resultCasesViewModel.countries.Where(value =>
-                value.country.IndexOf(e.NewTextValue, StringComparison.OrdinalIgnoreCase) >= 0);
+                value.country.IndexOf(e.NewTextValue, StringComparison.OrdinalIgnoreCase) >= 0 || value.continent.IndexOf(e.NewTextValue, StringComparison.OrdinalIgnoreCase) >= 0); 
+                int _totalCasos = 0;
+
+                if (e.NewTextValue == "Africa")
+                {
+
+                    foreach (var  x in resultCasesViewModel.countries)
+                {
+                   
+                    if(x.continent == "Africa")
+                    {
+                        _totalCasos += x.cases;
+
+                        lblcasos.Text = "total africa " + _totalCasos;
+                    }
+                }
+
+                    }
+
             }
         }
     }
 
-  
+
 }

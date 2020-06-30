@@ -11,6 +11,8 @@ using Xamarin.Essentials;
 using System.Threading.Tasks;
 using FFImageLoading.Forms.Platform;
 using Acr.UserDialogs;
+using Com.OneSignal;
+using Firebase;
 
 namespace XFCovidTrack.Droid
 {
@@ -28,6 +30,8 @@ namespace XFCovidTrack.Droid
 
             base.OnCreate(savedInstanceState);
 
+            OneSignal.Current.StartInit("7ebb30ca-7bb3-474b-ba30-5f490c4c8041").EndInit();
+            FirebaseApp.InitializeApp(this);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);

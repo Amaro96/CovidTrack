@@ -46,25 +46,7 @@ namespace XFCovidTrack.ViewModels
 
         public void CoronaVirusVoid()
         {
-            StringBuilder covid = new StringBuilder();
-
-            covid.AppendLine("");
-            covid.AppendLine("");
-            covid.AppendLine("* Clean your hands often. Use soap and water, or an alcohol-based hand rub.");
-            covid.AppendLine("");
-            covid.AppendLine("* Maintain a safe distance from anyone who is coughing or sneezing.");
-            covid.AppendLine("");
-            covid.AppendLine("* Don’t touch your eyes, nose or mouth.");
-            covid.AppendLine("");
-            covid.AppendLine("* Cover your nose and mouth with your bent elbow or a tissue when you cough or sneeze.");
-            covid.AppendLine("");
-            covid.AppendLine("* Stay home if you feel unwell.");
-            covid.AppendLine("");
-            covid.AppendLine("* If you have a fever, cough and difficulty breathing, seek medical attention. Call in advance.");
-            covid.AppendLine("");
-            covid.AppendLine("* Follow the directions of your local health authority.");
-
-            App.Current.MainPage.DisplayAlert("To prevent the spread of COVID-19:", covid.ToString(), "OK");
+            App.Current.MainPage.Navigation.PushAsync(new AvoidVirus());
         }
 
         public async Task ExecuteSelectedCommand()
