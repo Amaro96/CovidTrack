@@ -15,7 +15,7 @@
     <PackageReference Include="Com.OneSignal" Version="3.9.0" />
     <PackageReference Include="Flurl" Version="3.0.0-pre3" />
     <PackageReference Include="Flurl.Http" Version="3.0.0-pre3" />
-    <PackageReference Include="LiteDB" Version="5.0.8" />
+    <PackageReference Include="LiteDB" Version="5.0.13" />
     <PackageReference Include="Microsoft.AppCenter" Version="3.2.2" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.2.2" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.2.2" />
